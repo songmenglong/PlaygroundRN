@@ -7,7 +7,7 @@
 
 
 备份package.json的依赖版本
-
+```json
 "dependencies": {
     "@react-navigation/bottom-tabs": "^6.4.1",
     "@react-navigation/native": "^6.0.13",
@@ -20,6 +20,5 @@
     "react-native-screens": "^3.18.2",
     "react-native-svg": "^13.5.0",
     "react-native-video": "^6.0.0-alpha.3"
-  },
-
-
+},
+```
