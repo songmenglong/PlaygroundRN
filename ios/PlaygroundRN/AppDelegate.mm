@@ -44,6 +44,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 #endif
 
   NSDictionary *initProps = [self prepareInitialProps];
+  // 创建根view
   UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"PlaygroundRN", initProps);
 
   if (@available(iOS 13.0, *)) {
@@ -54,7 +55,9 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
+  // 设置view
   rootViewController.view = rootView;
+  // 设置根视图
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;

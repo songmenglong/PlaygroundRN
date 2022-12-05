@@ -1,4 +1,10 @@
 
+# 运行rn工程
+yarn ios
+yarn react-native run-ios
+
+
+
 # 参考链接
 
 [react-navigation(5.x)新版本使用（二）之Stack和Tab的嵌套以及在次级界面隐藏底部tab](https://blog.csdn.net/weixin_42405831/article/details/105587078)

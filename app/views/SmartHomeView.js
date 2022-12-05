@@ -1,7 +1,7 @@
 import React from "react"
 import { View } from "react-native"
 
-const SmartHomeView = () => {
+const SmartHomeView = ({navigation}) => {
     return (
         <View>            
         </View>

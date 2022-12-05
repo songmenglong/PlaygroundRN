@@ -4,12 +4,12 @@ import { TouchableOpacity, Text } from "react-native";
 
 function FeedScreen({ navigation }) {
 
-    React.useLayoutEffect(()=>{
+    React.useLayoutEffect(() => {
         navigation.setOptions({
             title: 'Name'
         })
-    }, [navigation])
-    
+    }, [navigation]);
+
     return (
         <View
             style={{

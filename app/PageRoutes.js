@@ -1,13 +1,16 @@
 import React from "react";
 
-import { NavigationContainer } from '@react-navigation/native';
+import { 
+    NavigationContainer,
+    getFocusedRouteNameFromRoute,
+ } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import HomeView from "./views/HomeView";
 import MineView from "./views/MineView";
-import FeedScreen from "./views/FeedScreen";
-import AccountScreen from "./views/AccountScreen";
+import FeedScreen from "./views/tabbars/FeedScreen";
+import AccountScreen from "./views/tabbars/AccountScreen";
 
 import PlaygroundView from "./views/PlaygroundView"; // 测试路由页面
 import ProfileScreen from "./views/ProfileScreen"; 
@@ -15,6 +18,23 @@ import SettingsScreen from "./views/SettingsScreen";
 import DraggableFlatlistView from "./views/DraggableFlatlistView";
 
 import { Image } from "react-native";  
+import TabIcon from "./views/tabbars/TabIcon";
+
+// 设置Tabbar顶部标题参考
+// https://reactnavigation.org/docs/screen-options-resolution/#setting-parent-screen-options-based-on-child-navigators-state
+function getHeaderTitle(route) {
+    // 获取路由名字
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
+
+    switch (routeName) {
+      case 'Feed':
+        return 'Feed';
+      case 'Profile':
+        return 'Profile';
+      case 'Account':
+        return 'Account';
+    }
+  }
 
 
 /// 底部导航栏
@@ -24,11 +44,6 @@ const BottomTabs = () => {
 
     return (
         <Tab.Navigator
-            // screenOptions={{
-            //     headerShown: false,
-            //     tabBarActiveTintColor: '#e91e63',
-            // }}
-
             screenOptions={({})=>({
                 headerShown: false,
                 tabBarActiveTintColor: '#e91e63',
@@ -38,18 +53,13 @@ const BottomTabs = () => {
                 name="Feed"
                 component={FeedScreen}
                 options={{
-                    // title: 'Feed',
-                    tabBarLabel: 'Feed', // tabbar名字
+                    title: 'Feed',
                     tabBarBadge: 3,
                     tabBarIcon: ({ color, size }) => {
                         return (
-                            <Image
-                                style={{
-                                    width: 20,
-                                    height: 20,
-                                }}
-                                source={require('./res/IMG_6932.jpg')} // 设置图片
-                            ></Image>
+                            <TabIcon
+                            source={require('./res/IMG_6932.jpg')}
+                            ></TabIcon>
                         )
                     },
                 }}
@@ -59,6 +69,13 @@ const BottomTabs = () => {
                 component={ProfileScreen}
                 options={{
                     title: 'Profile',
+                    tabBarIcon: ({ color, size }) => {
+                        return (
+                            <TabIcon
+                            source={require('./res/IMG_6932.jpg')}
+                            ></TabIcon>
+                        )
+                    },
                 }}
             ></Tab.Screen>
             <Tab.Screen
@@ -66,6 +83,13 @@ const BottomTabs = () => {
                 component={AccountScreen}
                 options={{
                     title: 'Account',
+                    tabBarIcon: ({ color, size }) => {
+                        return (
+                            <TabIcon
+                            source={require('./res/IMG_6932.jpg')}
+                            ></TabIcon>
+                        )
+                    },
                 }}
             ></Tab.Screen>
         </Tab.Navigator>
@@ -92,8 +116,11 @@ const PageRoutes = () => {
                     // 底部导航栏
                     name="Home"
                     component={BottomTabs}
-                    screenOptions={({route})=>({
-                        // console.log("" + route)
+                    // screenOptions={({route})=>({
+                    //     // console.log("" + route)
+                    // })}
+                    options={({ route }) => ({
+                        headerTitle: getHeaderTitle(route),
                     })}
                 ></Stack.Screen>
 
@@ -129,7 +156,5 @@ const PageRoutes = () => {
         </NavigationContainer>
     )
 }
-
-
 
 export default PageRoutes;
