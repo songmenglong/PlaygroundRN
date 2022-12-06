@@ -6,7 +6,8 @@ function FeedScreen({ navigation }) {
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
-            title: 'Name'
+            // title: 'Name'
+            // headerTitle: 'SASAS', // 设置无效
         })
     }, [navigation]);
 
@@ -20,8 +21,7 @@ function FeedScreen({ navigation }) {
         >
             <TouchableOpacity
                 onPress={() => {
-                    // navigation.navigate('Settings')
-                    // navigation.navigate('DraggableFlatlistView')//PlaygroundView
+                    navigation.navigate('Settings')
                 }}
             >
                 <Text>{"Settings"}</Text>

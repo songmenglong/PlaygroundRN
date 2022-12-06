@@ -16,8 +16,7 @@ import PlaygroundView from "./views/PlaygroundView"; // 测试路由页面
 import ProfileScreen from "./views/ProfileScreen"; 
 import SettingsScreen from "./views/SettingsScreen";
 import DraggableFlatlistView from "./views/DraggableFlatlistView";
-
-import { Image } from "react-native";  
+// tabbar icon
 import TabIcon from "./views/tabbars/TabIcon";
 
 // 设置Tabbar顶部标题参考
